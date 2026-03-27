@@ -149,7 +149,7 @@ const Index = () => {
   return (
     <main>
     {/* Hero */}
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
       <img src={heroImg} alt="Rooftop by Vrindavan" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
       <div className="absolute inset-0 bg-foreground/40" />
       <motion.div
@@ -185,7 +185,7 @@ const Index = () => {
     </section>
 
     {/* About Preview */}
-    <section className="py-20 md:py-28">
+    <section className="py-16 md:py-28">
       <div className="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Our Story</p>
@@ -215,7 +215,7 @@ const Index = () => {
     {/* Spaces Section Removed and Combined into Gallery below */}
 
     {/* Menu Preview */}
-    <section id="menu" className="relative pt-0 pb-20 md:pb-28" style={{ background: 'linear-gradient(160deg, hsl(30, 25%, 22%) 0%, hsl(28, 30%, 16%) 50%, hsl(25, 35%, 12%) 100%)' }}>
+    <section id="menu" className="relative pt-0 pb-16 md:pb-28" style={{ background: 'linear-gradient(160deg, hsl(30, 25%, 22%) 0%, hsl(28, 30%, 16%) 50%, hsl(25, 35%, 12%) 100%)' }}>
       {/* Top wave */}
       <div className="overflow-hidden leading-none -mb-1">
         <svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="w-full h-14 md:h-20" style={{ display: 'block' }}>
@@ -255,7 +255,7 @@ const Index = () => {
     </section>
 
     {/* Combined Gallery Section */}
-    <section id="gallery" className="py-20 md:py-28">
+    <section id="gallery" className="py-16 md:py-28">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Gallery & Spaces</p>
@@ -312,7 +312,7 @@ const Index = () => {
     </section>
 
     {/* Reviews */}
-    <section className="relative py-20 md:py-28 overflow-hidden">
+    <section className="relative py-16 md:py-28 overflow-hidden">
       <img src={terraceImg} alt="Background" className="absolute inset-0 w-full h-full object-cover -z-20" />
       <div className="absolute inset-0 bg-black/80 -z-10" />
       {/* Top wave */}
@@ -354,7 +354,7 @@ const Index = () => {
     </section>
 
     {/* CTA */}
-    <section className="py-20 md:py-28">
+    <section className="py-16 md:py-28">
       <div className="container mx-auto px-4 md:px-8 text-center">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">Reserve Your Table Now</h2>

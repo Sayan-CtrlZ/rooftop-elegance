@@ -97,11 +97,11 @@ const ClockPicker = ({ value, onChange, className }: ClockPickerProps) => {
       {/* Backdrop */}
       {open && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm touch-none"
           onClick={() => setOpen(false)}
         >
           <div
-            className="bg-white border border-border rounded-2xl shadow-2xl p-5 w-full max-w-[280px]"
+            className="bg-white border border-border rounded-2xl shadow-2xl p-5 w-full max-w-[280px] animate-in fade-in zoom-in duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* AM/PM & Step Indicator */}
@@ -110,7 +110,7 @@ const ClockPicker = ({ value, onChange, className }: ClockPickerProps) => {
                 <button
                   type="button"
                   onClick={() => setStep("hour")}
-                  className={`font-heading text-2xl font-bold transition-colors ${step === "hour" ? "text-primary" : "text-muted-foreground"}`}
+                  className={`font-heading text-2xl font-bold transition-colors active:scale-95 ${step === "hour" ? "text-primary" : "text-muted-foreground"}`}
                 >
                   {String(hour).padStart(2, "0")}
                 </button>
@@ -118,7 +118,7 @@ const ClockPicker = ({ value, onChange, className }: ClockPickerProps) => {
                 <button
                   type="button"
                   onClick={() => setStep("minute")}
-                  className={`font-heading text-2xl font-bold transition-colors ${step === "minute" ? "text-primary" : "text-muted-foreground"}`}
+                  className={`font-heading text-2xl font-bold transition-colors active:scale-95 ${step === "minute" ? "text-primary" : "text-muted-foreground"}`}
                 >
                   {String(minute).padStart(2, "0")}
                 </button>
@@ -129,7 +129,7 @@ const ClockPicker = ({ value, onChange, className }: ClockPickerProps) => {
                     key={p}
                     type="button"
                     onClick={() => setAmpm(p)}
-                    className={`text-xs font-body font-medium px-2 py-0.5 rounded transition-colors ${ampm === p ? "bg-primary text-white" : "text-muted-foreground hover:text-foreground"}`}
+                    className={`text-xs font-body font-medium px-2 py-0.5 rounded transition-colors active:scale-95 ${ampm === p ? "bg-primary text-white" : "text-muted-foreground hover:text-foreground"}`}
                   >
                     {p}
                   </button>
@@ -141,7 +141,7 @@ const ClockPicker = ({ value, onChange, className }: ClockPickerProps) => {
             <svg
               ref={svgRef}
               viewBox="0 0 200 200"
-              className="w-full cursor-pointer"
+              className="w-full cursor-pointer touch-none"
               onClick={handleClockClick}
             >
               <circle cx={cx} cy={cy} r={r} fill="hsl(36, 33%, 97%)" stroke="hsl(33, 20%, 88%)" strokeWidth="1.5" />
@@ -180,14 +180,14 @@ const ClockPicker = ({ value, onChange, className }: ClockPickerProps) => {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="flex-1 py-2 text-sm font-body text-muted-foreground hover:text-foreground rounded-lg border border-border hover:bg-secondary/50 transition-colors"
+                className="flex-1 py-2 text-sm font-body text-muted-foreground hover:text-foreground rounded-lg border border-border hover:bg-secondary/50 transition-colors active:scale-95"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={confirmTime}
-                className="flex-1 py-2 text-sm font-body bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                className="flex-1 py-2 text-sm font-body bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium active:scale-95"
               >
                 OK
               </button>

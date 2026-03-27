@@ -27,7 +27,7 @@ const Reservation = () => {
 
   return (
     <main className="pt-16">
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-28">
         <div className="container mx-auto px-4 md:px-8 max-w-2xl">
           <motion.div className="text-center mb-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Book a Table</p>
@@ -37,7 +37,7 @@ const Reservation = () => {
 
           <motion.form
             onSubmit={handleSubmit}
-            className="bg-white rounded-xl shadow-xl border border-border/50 p-8 space-y-5"
+            className="bg-white rounded-xl shadow-xl border border-border/50 p-6 md:p-8 space-y-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
