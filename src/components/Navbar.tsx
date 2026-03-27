@@ -55,21 +55,27 @@ const Navbar = () => {
 
         {/* Desktop */}
         <ul className="hidden md:flex items-center gap-2 md:mr-12">
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <Link
-                to={link.path}
-                onClick={() => handleLinkClick(link.path)}
-                className={`font-body text-base px-5 py-2.5 rounded-md tracking-wide transition-all ${
-                  location.pathname === link.path 
-                    ? "bg-primary/15 text-primary font-semibold drop-shadow-sm" 
-                    : "text-foreground font-medium drop-shadow-sm hover:bg-secondary/60 hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.path.includes("#") 
+              ? location.pathname === link.path.split("#")[0] && location.hash === "#" + link.path.split("#")[1]
+              : location.pathname === link.path && !location.hash;
+
+            return (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  onClick={() => handleLinkClick(link.path)}
+                  className={`font-body text-base px-5 py-2.5 rounded-md tracking-wide transition-all ${
+                    isActive 
+                      ? "bg-primary/15 text-primary font-semibold drop-shadow-sm" 
+                      : "text-foreground font-medium drop-shadow-sm hover:bg-secondary/60 hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Mobile toggle */}
@@ -93,21 +99,27 @@ const Navbar = () => {
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border shadow-lg overflow-hidden"
           >
             <ul className="flex flex-col items-stretch px-4 gap-1 py-6">
-              {navLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    onClick={() => handleLinkClick(link.path)}
-                    className={`block font-body text-lg px-6 py-4 rounded-xl tracking-wide transition-all active:bg-secondary/80 ${
-                      location.pathname === link.path 
-                        ? "bg-primary/10 text-primary font-semibold" 
-                        : "text-foreground font-medium hover:bg-secondary/60"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = link.path.includes("#") 
+                  ? location.pathname === link.path.split("#")[0] && location.hash === "#" + link.path.split("#")[1]
+                  : location.pathname === link.path && !location.hash;
+
+                return (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      onClick={() => handleLinkClick(link.path)}
+                      className={`block font-body text-lg px-6 py-4 rounded-xl tracking-wide transition-all active:bg-secondary/80 ${
+                        isActive 
+                          ? "bg-primary/10 text-primary font-semibold" 
+                          : "text-foreground font-medium hover:bg-secondary/60"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </motion.div>
         )}
