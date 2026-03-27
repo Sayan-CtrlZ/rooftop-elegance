@@ -11,7 +11,6 @@ import Reservation from "./pages/Reservation";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-import FloatingReserve from "@/components/FloatingReserve";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -23,7 +22,6 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <Navbar />
-        <FloatingReserve />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
