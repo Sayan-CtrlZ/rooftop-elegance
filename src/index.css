@@ -15,7 +15,7 @@
     --popover: 37 30% 96%;
     --popover-foreground: 30 10% 15%;
 
-    --primary: 32 38% 64%;
+    --primary: 30 35% 42%;
     --primary-foreground: 37 30% 98%;
 
     --secondary: 33 25% 90%;
@@ -24,7 +24,7 @@
     --muted: 35 20% 93%;
     --muted-foreground: 30 8% 50%;
 
-    --accent: 32 38% 64%;
+    --accent: 30 35% 42%;
     --accent-foreground: 37 30% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,7 +32,7 @@
 
     --border: 33 20% 88%;
     --input: 33 20% 88%;
-    --ring: 32 38% 64%;
+    --ring: 30 35% 42%;
 
     --radius: 0.75rem;
 
@@ -40,8 +40,8 @@
     --cream-dark: 33 25% 90%;
     --warm-white: 40 33% 99%;
     --sand: 33 20% 85%;
-    --gold: 32 38% 64%;
-    --gold-dark: 30 30% 45%;
+    --gold: 30 35% 42%;
+    --gold-dark: 28 32% 32%;
     --charcoal: 30 10% 15%;
     --charcoal-light: 30 8% 35%;
 
@@ -88,4 +88,9 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
