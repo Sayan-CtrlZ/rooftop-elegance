@@ -7,6 +7,13 @@ import foodImg from "@/assets/food-platter.jpg";
 import galleryFood1 from "@/assets/gallery-food1.jpg";
 import galleryDrinks from "@/assets/gallery-drinks.jpg";
 import galleryAmbience2 from "@/assets/gallery-ambience2.jpg";
+import terraceImg from "@/assets/Terrace.webp";
+import diningAreaImg from "@/assets/Dinning area.webp";
+import pergolaImg from "@/assets/pergola.webp";
+import insideSittingImg from "@/assets/inside-sitting-room.webp";
+import haraBharaKababImg from "@/assets/hara-bhara-kabab.webp";
+import cocktailImg from "@/assets/coctail.webp";
+import trellisImg from "@/assets/Trellis.webp";
 import ReviewCarousel from "@/components/ReviewCarousel";
 
 const fadeUp = {
@@ -42,6 +49,9 @@ const galleryImages = [
   { src: galleryDrinks, alt: "Refreshing drinks" },
   { src: ambienceImg, alt: "Restaurant ambience" },
   { src: galleryAmbience2, alt: "Candlelight dinner" },
+  { src: haraBharaKababImg, alt: "Hara Bhara Kabab" },
+  { src: cocktailImg, alt: "Signature Cocktail" },
+  { src: trellisImg, alt: "The Trellis" },
 ];
 
 const MenuCard = ({ name, price }: { name: string; price: string }) => (
@@ -114,6 +124,54 @@ const Index = () => (
             height={600}
           />
         </motion.div>
+      </div>
+    </section>
+
+    {/* Spaces Section */}
+    <section className="py-20 md:py-28">
+      <div className="container mx-auto px-4 md:px-8">
+        <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+          <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Our Spaces</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">Choose Your Perfect Spot</h2>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+          {/* Open Terrace */}
+          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <img src={terraceImg} alt="Open Terrace" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+              <h3 className="font-heading text-2xl font-semibold text-white mb-2">The Open Terrace</h3>
+              <p className="font-body text-white/80">Experience the breeze and starry nights with a spectacular view.</p>
+            </div>
+          </motion.div>
+
+          {/* Dining Area */}
+          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3] md:mt-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <img src={diningAreaImg} alt="Dining Area" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+              <h3 className="font-heading text-2xl font-semibold text-white mb-2">Elegant Dining Area</h3>
+              <p className="font-body text-white/80">A cozy, beautifully lit space perfect for romantic dinners and family gatherings.</p>
+            </div>
+          </motion.div>
+
+          {/* Pergola */}
+          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <img src={pergolaImg} alt="Pergola" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+              <h3 className="font-heading text-2xl font-semibold text-white mb-2">The Pergola</h3>
+              <p className="font-body text-white/80">Semi-open and shaded, offering a serene, relaxed daytime or evening dining experience.</p>
+            </div>
+          </motion.div>
+
+          {/* Inside Sitting Room */}
+          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3] md:mt-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <img src={insideSittingImg} alt="Inside Sitting Room" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+              <h3 className="font-heading text-2xl font-semibold text-white mb-2">Private Inner Lounge</h3>
+              <p className="font-body text-white/80">An intimate setting with plush seating for exclusive gatherings and quiet moments.</p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
 
