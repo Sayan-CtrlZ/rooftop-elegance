@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, Utensils, Coffee, GlassWater } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Utensils, Coffee, GlassWater, X } from "lucide-react";
 import heroImg from "@/assets/hero-rooftop.jpg";
 import ambienceImg from "@/assets/ambience.jpg";
 import foodImg from "@/assets/food-platter.jpg";
@@ -44,9 +45,13 @@ const menuItems = {
 
 const galleryImages = [
   { src: heroImg, alt: "Rooftop view" },
+  { src: terraceImg, alt: "The Open Terrace", title: "The Open Terrace", desc: "Experience the breeze and starry nights with a spectacular view." },
   { src: foodImg, alt: "Food platter" },
+  { src: diningAreaImg, alt: "Elegant Dining Area", title: "Elegant Dining Area", desc: "A cozy, beautifully lit space perfect for romantic dinners and family gatherings." },
   { src: galleryFood1, alt: "Samosa starter" },
+  { src: pergolaImg, alt: "The Pergola", title: "The Pergola", desc: "Semi-open and shaded, offering a serene, relaxed daytime or evening dining experience." },
   { src: galleryDrinks, alt: "Refreshing drinks" },
+  { src: insideSittingImg, alt: "Private Inner Lounge", title: "Private Inner Lounge", desc: "An intimate setting with plush seating for exclusive gatherings and quiet moments." },
   { src: ambienceImg, alt: "Restaurant ambience" },
   { src: galleryAmbience2, alt: "Candlelight dinner" },
   { src: haraBharaKababImg, alt: "Hara Bhara Kabab" },
@@ -61,8 +66,11 @@ const MenuCard = ({ name, price }: { name: string; price: string }) => (
   </div>
 );
 
-const Index = () => (
-  <main>
+const Index = () => {
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
+  return (
+    <main>
     {/* Hero */}
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       <img src={heroImg} alt="Rooftop by Vrindavan" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
@@ -79,8 +87,8 @@ const Index = () => (
         <motion.h1 variants={fadeUp} className="font-heading text-4xl md:text-6xl font-bold text-primary-foreground leading-tight mb-4">
           Rooftop by Vrindavan
         </motion.h1>
-        <motion.p variants={fadeUp} className="font-body text-lg text-primary-foreground/90 mb-8">
-          A Warm Rooftop Dining Experience
+        <motion.p variants={fadeUp} className="font-body text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-xl mx-auto">
+          A Warm Rooftop Dining Experience. Discover the magic of dining under the stars with exquisite culinary delights and a breathtaking ambience designed to elevate every occasion.
         </motion.p>
         <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
@@ -108,7 +116,7 @@ const Index = () => (
             Dine Under the Open Sky
           </h2>
           <p className="font-body text-muted-foreground leading-relaxed mb-6">
-            Perched above the bustling streets of Shujalpur, Rooftop by Vrindavan offers a serene escape where delicious food meets breathtaking views. Our warm ambience, twinkling fairy lights, and carefully curated menu create the perfect setting for unforgettable evenings with loved ones.
+            Perched above the bustling streets of Shujalpur, Rooftop by Vrindavan offers a serene escape where delicious food meets breathtaking views. Our warm ambience, twinkling fairy lights, and carefully curated menu create the perfect setting for unforgettable evenings with loved ones. Whether you're seeking a quiet, romantic corner or a vibrant space to celebrate with friends, our thoughtfully designed atmosphere promises an experience that lingers long after your visit.
           </p>
           <Link to="/about" className="font-body text-sm text-primary font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
             Read More <ArrowRight size={14} />
@@ -127,53 +135,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Spaces Section */}
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-4 md:px-8">
-        <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Our Spaces</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">Choose Your Perfect Spot</h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-          {/* Open Terrace */}
-          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <img src={terraceImg} alt="Open Terrace" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-              <h3 className="font-heading text-2xl font-semibold text-white mb-2">The Open Terrace</h3>
-              <p className="font-body text-white/80">Experience the breeze and starry nights with a spectacular view.</p>
-            </div>
-          </motion.div>
-
-          {/* Dining Area */}
-          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3] md:mt-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <img src={diningAreaImg} alt="Dining Area" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-              <h3 className="font-heading text-2xl font-semibold text-white mb-2">Elegant Dining Area</h3>
-              <p className="font-body text-white/80">A cozy, beautifully lit space perfect for romantic dinners and family gatherings.</p>
-            </div>
-          </motion.div>
-
-          {/* Pergola */}
-          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3]" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <img src={pergolaImg} alt="Pergola" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-              <h3 className="font-heading text-2xl font-semibold text-white mb-2">The Pergola</h3>
-              <p className="font-body text-white/80">Semi-open and shaded, offering a serene, relaxed daytime or evening dining experience.</p>
-            </div>
-          </motion.div>
-
-          {/* Inside Sitting Room */}
-          <motion.div className="group rounded-2xl overflow-hidden relative shadow-card aspect-[4/3] md:mt-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <img src={insideSittingImg} alt="Inside Sitting Room" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-              <h3 className="font-heading text-2xl font-semibold text-white mb-2">Private Inner Lounge</h3>
-              <p className="font-body text-white/80">An intimate setting with plush seating for exclusive gatherings and quiet moments.</p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+    {/* Spaces Section Removed and Combined into Gallery below */}
 
     {/* Menu Preview */}
     <section id="menu" className="py-20 md:py-28 bg-secondary/50">
@@ -209,29 +171,36 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Gallery */}
+    {/* Combined Gallery Section */}
     <section className="py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Gallery</p>
+          <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Gallery & Spaces</p>
           <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">Glimpses of Vrindavan</h2>
         </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
           {galleryImages.map((img, i) => (
             <motion.div
               key={i}
-              className="overflow-hidden rounded-xl aspect-square"
+              className="group overflow-hidden rounded-xl relative cursor-pointer break-inside-avoid shadow-sm"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
+              onClick={() => setSelectedImg(img.src)}
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
+              {img.title && (
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <h3 className="font-heading text-xl font-semibold text-white mb-1">{img.title}</h3>
+                  <p className="font-body text-sm text-white/80">{img.desc}</p>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -239,13 +208,32 @@ const Index = () => (
     </section>
 
     {/* Reviews */}
-    <section className="py-20 md:py-28 bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-8">
+    <section className="py-20 md:py-28 relative overflow-hidden">
+      <img src={terraceImg} alt="Background" className="absolute inset-0 w-full h-full object-cover -z-20" />
+      <div className="absolute inset-0 bg-black/80 -z-10" />
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Testimonials</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">What Our Guests Say</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-white">What Our Guests Say</h2>
         </motion.div>
         <ReviewCarousel />
+        
+        <motion.div className="mt-12 text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+          <a
+            href="https://g.page/r/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-foreground shadow-md hover:shadow-xl transition-all font-body font-medium border border-border hover:border-border/50 hover:-translate-y-1"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-5 h-5">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            Review us on Google
+          </a>
+        </motion.div>
       </div>
     </section>
 
@@ -266,7 +254,38 @@ const Index = () => (
         </motion.div>
       </div>
     </section>
+
+    {/* Lightbox Modal */}
+    <AnimatePresence>
+      {selectedImg && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out"
+          onClick={() => setSelectedImg(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors bg-black/40 hover:bg-black/60 p-2 rounded-full"
+            onClick={(e) => { e.stopPropagation(); setSelectedImg(null); }}
+          >
+            <X size={28} />
+          </button>
+          <motion.img
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            src={selectedImg}
+            alt="Expanded view"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   </main>
-);
+  );
+};
 
 export default Index;

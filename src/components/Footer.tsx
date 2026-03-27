@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram } from "lucide-react";
 
 const Footer = () => (
   <footer className="bg-foreground text-primary-foreground py-16">
@@ -22,18 +22,33 @@ const Footer = () => (
           <li><Link to="/contact" className="hover:opacity-100 transition-opacity">Contact</Link></li>
         </ul>
       </div>
-      <div className="space-y-3 font-body text-sm opacity-70">
-        <div className="flex items-start gap-2">
-          <MapPin size={16} className="mt-0.5 shrink-0" />
-          <span>Kanha ka Vrindavan Garden, Shujalpur, MP</span>
+      <div className="space-y-6">
+        <div className="space-y-3 font-body text-sm opacity-70">
+          <div className="flex items-start gap-2">
+            <MapPin size={16} className="mt-0.5 shrink-0" />
+            <span>Kanha ka Vrindavan Garden, Shujalpur, MP</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Phone size={16} className="shrink-0" />
+            <a href="tel:+919876543210" className="hover:opacity-100 transition-opacity">+91 98765 43210</a>
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock size={16} className="shrink-0" />
+            <span>Open daily from 4:00 PM onwards</span>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <Phone size={16} className="shrink-0" />
-          <a href="tel:+919876543210" className="hover:opacity-100 transition-opacity">+91 98765 43210</a>
-        </div>
-        <div className="flex items-center gap-2">
-          <Clock size={16} className="shrink-0" />
-          <span>Open daily from 4:00 PM onwards</span>
+
+        <div>
+          <h4 className="font-heading text-lg font-medium mb-3">Follow Us</h4>
+          <a
+            href="https://www.instagram.com/rooftopbyvrindavan/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center p-2 rounded-full bg-white/10 hover:bg-white/25 hover:scale-110 transition-all text-white"
+            aria-label="Follow us on Instagram"
+          >
+            <Instagram size={20} />
+          </a>
         </div>
       </div>
     </div>

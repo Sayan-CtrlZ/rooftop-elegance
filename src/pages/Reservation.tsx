@@ -36,7 +36,7 @@ const Reservation = () => {
 
           <motion.form
             onSubmit={handleSubmit}
-            className="bg-card rounded-xl shadow-card p-8 space-y-5"
+            className="bg-white rounded-xl shadow-xl border border-border/50 p-8 space-y-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

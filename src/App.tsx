@@ -11,6 +11,8 @@ import Reservation from "./pages/Reservation";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+import FloatingReserve from "@/components/FloatingReserve";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -19,6 +21,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Navbar />
+        <FloatingReserve />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />

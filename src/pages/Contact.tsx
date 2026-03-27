@@ -18,7 +18,7 @@ const Contact = () => (
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Info */}
           <motion.div className="space-y-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <div className="bg-card rounded-xl shadow-card p-6 space-y-6">
+            <div className="bg-white rounded-xl shadow-xl border border-border/50 p-6 space-y-6">
               <div className="flex items-start gap-4">
                 <MapPin size={20} className="text-primary mt-0.5 shrink-0" />
                 <div>
@@ -54,7 +54,7 @@ const Contact = () => (
 
           {/* Map */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <div className="rounded-xl overflow-hidden shadow-card h-full min-h-[350px]">
+            <div className="bg-white rounded-xl overflow-hidden shadow-xl border border-border/50 h-full min-h-[350px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.123456789!2d76.7123456!3d23.3456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sShujalpur%2C+Madhya+Pradesh!5e0!3m2!1sen!2sin!4v1234567890"
                 width="100%"
