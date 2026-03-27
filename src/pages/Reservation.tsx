@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import ClockPicker from "@/components/ClockPicker";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -56,7 +57,11 @@ const Reservation = () => {
               <input name="date" type="date" value={form.date} onChange={handleChange} required className={inputClass} />
             </div>
             <div className="grid sm:grid-cols-2 gap-5">
-              <input name="time" type="time" value={form.time} onChange={handleChange} required className={inputClass} />
+              <ClockPicker
+                value={form.time}
+                onChange={(t) => setForm({ ...form, time: t })}
+                className={inputClass}
+              />
               <select name="occasion" value={form.occasion} onChange={handleChange} className={inputClass}>
                 <option value="">Occasion (Optional)</option>
                 <option>Birthday</option>

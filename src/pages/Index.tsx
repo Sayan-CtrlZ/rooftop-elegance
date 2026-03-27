@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Utensils, Coffee, GlassWater, X } from "lucide-react";
 import heroImg from "@/assets/hero-rooftop.jpg";
@@ -44,19 +44,84 @@ const menuItems = {
 };
 
 const galleryImages = [
-  { src: heroImg, alt: "Rooftop view" },
-  { src: terraceImg, alt: "The Open Terrace", title: "The Open Terrace", desc: "Experience the breeze and starry nights with a spectacular view." },
-  { src: foodImg, alt: "Food platter" },
-  { src: diningAreaImg, alt: "Elegant Dining Area", title: "Elegant Dining Area", desc: "A cozy, beautifully lit space perfect for romantic dinners and family gatherings." },
-  { src: galleryFood1, alt: "Samosa starter" },
-  { src: pergolaImg, alt: "The Pergola", title: "The Pergola", desc: "Semi-open and shaded, offering a serene, relaxed daytime or evening dining experience." },
-  { src: galleryDrinks, alt: "Refreshing drinks" },
-  { src: insideSittingImg, alt: "Private Inner Lounge", title: "Private Inner Lounge", desc: "An intimate setting with plush seating for exclusive gatherings and quiet moments." },
-  { src: ambienceImg, alt: "Restaurant ambience" },
-  { src: galleryAmbience2, alt: "Candlelight dinner" },
-  { src: haraBharaKababImg, alt: "Hara Bhara Kabab" },
-  { src: cocktailImg, alt: "Signature Cocktail" },
-  { src: trellisImg, alt: "The Trellis" },
+  { 
+    src: heroImg, 
+    alt: "Rooftop view", 
+    title: "Panoramic Skyline", 
+    desc: "A breathtaking view where the city lights meet the starry sky." 
+  },
+  { 
+    src: terraceImg, 
+    alt: "The Open Terrace", 
+    title: "The Open Terrace", 
+    desc: "Experience the breeze and starry nights with a spectacular view." 
+  },
+  { 
+    src: foodImg, 
+    alt: "Food platter", 
+    title: "Signature Platter", 
+    desc: "A handpicked selection of our most exquisite and flavorful starters." 
+  },
+  { 
+    src: diningAreaImg, 
+    alt: "Elegant Dining Area", 
+    title: "Elegant Dining Area", 
+    desc: "A cozy, beautifully lit space perfect for romantic dinners and family gatherings." 
+  },
+  { 
+    src: galleryFood1, 
+    alt: "Samosa starter", 
+    title: "Traditional Delights", 
+    desc: "Crispy, golden-fried specialties served with authentic house-made chutneys." 
+  },
+  { 
+    src: pergolaImg, 
+    alt: "The Pergola", 
+    title: "The Pergola", 
+    desc: "Semi-open and shaded, offering a serene, relaxed daytime or evening dining experience." 
+  },
+  { 
+    src: galleryDrinks, 
+    alt: "Refreshing drinks", 
+    title: "Artisanal Mocktails", 
+    desc: "Vibrant and refreshing blends crafted from the freshest seasonal ingredients." 
+  },
+  { 
+    src: insideSittingImg, 
+    alt: "Private Inner Lounge", 
+    title: "Private Inner Lounge", 
+    desc: "An intimate setting with plush seating for exclusive gatherings and quiet moments." 
+  },
+  { 
+    src: ambienceImg, 
+    alt: "Restaurant ambience", 
+    title: "Golden Hour Glow", 
+    desc: "Witness the magical transition of day to night in our enchanting setting." 
+  },
+  { 
+    src: galleryAmbience2, 
+    alt: "Candlelight dinner", 
+    title: "Midnight Romance", 
+    desc: "The perfect candlelight ambiance designed to make your special moments eternal." 
+  },
+  { 
+    src: haraBharaKababImg, 
+    alt: "Hara Bhara Kabab", 
+    title: "Garden Fresh Kababs", 
+    desc: "Classic vegetarian kababs infused with garden spinach and aromatic spices." 
+  },
+  { 
+    src: cocktailImg, 
+    alt: "Signature Cocktail", 
+    title: "Master's Creation", 
+    desc: "Our bartender's signature craft, balancing bold spirits with delicate notes." 
+  },
+  { 
+    src: trellisImg, 
+    alt: "The Trellis", 
+    title: "Architectural Bloom", 
+    desc: "Dine beneath our iconic Trellis, where architecture and nature find harmony." 
+  },
 ];
 
 const MenuCard = ({ name, price }: { name: string; price: string }) => (
@@ -68,6 +133,18 @@ const MenuCard = ({ name, price }: { name: string; price: string }) => (
 
 const Index = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (window.location.hash === "#gallery") {
+      const element = document.getElementById("gallery");
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   return (
     <main>
@@ -138,11 +215,17 @@ const Index = () => {
     {/* Spaces Section Removed and Combined into Gallery below */}
 
     {/* Menu Preview */}
-    <section id="menu" className="py-20 md:py-28 bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="menu" className="relative pt-0 pb-20 md:pb-28" style={{ background: 'linear-gradient(160deg, hsl(30, 25%, 22%) 0%, hsl(28, 30%, 16%) 50%, hsl(25, 35%, 12%) 100%)' }}>
+      {/* Top wave */}
+      <div className="overflow-hidden leading-none -mb-1">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="w-full h-14 md:h-20" style={{ display: 'block' }}>
+          <path d="M0,0 C300,80 900,0 1200,60 L1200,0 L0,0 Z" fill="hsl(36, 33%, 97%)" />
+        </svg>
+      </div>
+      <div className="container mx-auto px-4 md:px-8 pt-4">
         <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Our Menu</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">Crafted with Love</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-white">Crafted with Love</h2>
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8">
           {([
@@ -152,7 +235,7 @@ const Index = () => {
           ] as const).map((cat) => (
             <motion.div
               key={cat.title}
-              className="bg-card rounded-xl p-6 shadow-card hover:shadow-card-hover hover:scale-[1.02] transition-all duration-300"
+              className="bg-white rounded-xl p-6 shadow-xl hover:scale-[1.02] transition-all duration-300"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -172,7 +255,7 @@ const Index = () => {
     </section>
 
     {/* Combined Gallery Section */}
-    <section className="py-20 md:py-28">
+    <section id="gallery" className="py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Gallery & Spaces</p>
@@ -192,15 +275,36 @@ const Index = () => {
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy"
               />
-              {img.title && (
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <h3 className="font-heading text-xl font-semibold text-white mb-1">{img.title}</h3>
-                  <p className="font-body text-sm text-white/80">{img.desc}</p>
+              
+              {/* Crossed Corner Frame Overlay */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 flex flex-col justify-end p-8">
+                {/* Decorative Frame Lines */}
+                <div className="absolute inset-4 pointer-events-none">
+                  {/* Top Left */}
+                  <div className="absolute top-0 -left-1 w-20 h-[2px] bg-white/90" />
+                  <div className="absolute -top-1 left-0 w-[2px] h-20 bg-white/90" />
+                  
+                  {/* Top Right */}
+                  <div className="absolute top-0 -right-1 w-20 h-[2px] bg-white/90" />
+                  <div className="absolute -top-1 right-0 w-[2px] h-20 bg-white/90" />
+                  
+                  {/* Bottom Left */}
+                  <div className="absolute bottom-0 -left-1 w-20 h-[2px] bg-white/90" />
+                  <div className="absolute -bottom-1 left-0 w-[2px] h-20 bg-white/90" />
+                  
+                  {/* Bottom Right */}
+                  <div className="absolute bottom-0 -right-1 w-20 h-[2px] bg-white" />
+                  <div className="absolute -bottom-1 right-0 w-[2px] h-20 bg-white" />
                 </div>
-              )}
+
+                <div className="relative transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 max-w-[85%]">
+                  <h3 className="font-heading text-xl font-semibold text-white mb-2">{img.title}</h3>
+                  <p className="font-body text-sm text-white/90 leading-relaxed">{img.desc}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -208,9 +312,21 @@ const Index = () => {
     </section>
 
     {/* Reviews */}
-    <section className="py-20 md:py-28 relative overflow-hidden">
+    <section className="relative py-20 md:py-28 overflow-hidden">
       <img src={terraceImg} alt="Background" className="absolute inset-0 w-full h-full object-cover -z-20" />
       <div className="absolute inset-0 bg-black/80 -z-10" />
+      {/* Top wave */}
+      <div className="absolute top-0 left-0 right-0 overflow-hidden leading-none -z-5">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="w-full h-14 md:h-20" style={{ display: 'block' }}>
+          <path d="M0,40 C200,80 500,0 800,50 C1000,80 1100,30 1200,20 L1200,0 L0,0 Z" fill="hsl(36, 33%, 97%)" />
+        </svg>
+      </div>
+      {/* Bottom wave */}
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="w-full h-14 md:h-20" style={{ display: 'block' }}>
+          <path d="M0,20 C200,70 500,0 800,50 C1000,80 1100,20 1200,40 L1200,80 L0,80 Z" fill="hsl(36, 33%, 97%)" />
+        </svg>
+      </div>
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <p className="font-body text-xs tracking-[0.25em] uppercase text-primary mb-3">Testimonials</p>
@@ -220,7 +336,7 @@ const Index = () => {
         
         <motion.div className="mt-12 text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <a
-            href="https://g.page/r/"
+            href="https://www.google.com/maps/place/Rooftop+by+Vrindavan/@25.4506245,74.5666779,7z/data=!4m12!1m2!2m1!1srooftop+by+vrindavan!3m8!1s0x397cbb50f46f877b:0x53ff0a6322283302!8m2!3d23.3764805!4d76.7327956!9m1!1b1!15sChRyb29mdG9wIGJ5IHZyaW5kYXZhbloWIhRyb29mdG9wIGJ5IHZyaW5kYXZhbpIBCnJlc3RhdXJhbnTgAQA!16s%2Fg%2F11x143_777?entry=ttu"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-foreground shadow-md hover:shadow-xl transition-all font-body font-medium border border-border hover:border-border/50 hover:-translate-y-1"

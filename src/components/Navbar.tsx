@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", path: "/" },
+  { label: "Gallery", path: "/#gallery" },
   { label: "About", path: "/about" },
   { label: "Reserve", path: "/reservation" },
   { label: "Contact", path: "/contact" },
@@ -21,6 +22,19 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLinkClick = (path: string) => {
+    setOpen(false);
+    if (path.startsWith("/#")) {
+      const id = path.substring(2);
+      if (location.pathname === "/") {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
 
   return (
     <nav 
@@ -44,6 +58,7 @@ const Navbar = () => {
             <li key={link.path}>
               <Link
                 to={link.path}
+                onClick={() => handleLinkClick(link.path)}
                 className={`font-body text-base px-5 py-2.5 rounded-md tracking-wide transition-all ${
                   location.pathname === link.path 
                     ? "bg-primary/15 text-primary font-semibold drop-shadow-sm" 
@@ -70,7 +85,7 @@ const Navbar = () => {
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleLinkClick(link.path)}
                   className={`block font-body text-lg px-6 py-3 rounded-md tracking-wide transition-all ${
                     location.pathname === link.path 
                       ? "bg-primary/15 text-primary font-semibold" 
