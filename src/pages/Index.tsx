@@ -45,7 +45,7 @@ const galleryImages = [
 ];
 
 const MenuCard = ({ name, price }: { name: string; price: string }) => (
-  <div className="flex items-center justify-between py-3 border-b border-border last:border-0">
+  <div className="flex items-center justify-between py-3 border-b border-border last:border-0 hover:bg-secondary/30 px-2 -mx-2 rounded transition-colors duration-200">
     <span className="font-body text-sm text-foreground">{name}</span>
     <span className="font-body text-sm font-medium text-primary">{price}</span>
   </div>
