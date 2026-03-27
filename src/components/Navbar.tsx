@@ -14,15 +14,30 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeHash, setActiveHash] = useState("");
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      // Scroll Spy for Home / Gallery
+      if (location.pathname === "/") {
+        const gallery = document.getElementById("gallery");
+        if (gallery) {
+          const rect = gallery.getBoundingClientRect();
+          // If gallery top is near center of viewport, or has passed it
+          if (rect.top <= 150) {
+            setActiveHash("#gallery");
+          } else {
+            setActiveHash("");
+          }
+        }
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const handleLinkClick = (path: string) => {
     setOpen(false);
@@ -32,6 +47,7 @@ const Navbar = () => {
         const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
+          setActiveHash(`#${id}`);
         }
       }
     }
@@ -57,8 +73,8 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-2 md:mr-12">
           {navLinks.map((link) => {
             const isActive = link.path.includes("#") 
-              ? location.pathname === link.path.split("#")[0] && location.hash === "#" + link.path.split("#")[1]
-              : location.pathname === link.path && !location.hash;
+              ? location.pathname === "/" && activeHash === "#" + link.path.split("#")[1]
+              : location.pathname === link.path && (location.pathname !== "/" || !activeHash);
 
             return (
               <li key={link.path}>
@@ -101,8 +117,8 @@ const Navbar = () => {
             <ul className="flex flex-col items-stretch px-4 gap-1 py-6">
               {navLinks.map((link) => {
                 const isActive = link.path.includes("#") 
-                  ? location.pathname === link.path.split("#")[0] && location.hash === "#" + link.path.split("#")[1]
-                  : location.pathname === link.path && !location.hash;
+                  ? location.pathname === "/" && activeHash === "#" + link.path.split("#")[1]
+                  : location.pathname === link.path && (location.pathname !== "/" || !activeHash);
 
                 return (
                   <li key={link.path}>
