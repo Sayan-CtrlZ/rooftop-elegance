@@ -15,19 +15,24 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-8">
-        <Link to="/" className="font-heading text-xl md:text-2xl font-semibold text-foreground tracking-wide">
-          Rooftop <span className="text-primary">by Vrindavan</span>
+      <div className="container mx-auto flex items-center justify-between h-20 md:h-24 px-4 md:px-8">
+        <Link to="/" className="flex items-center gap-3">
+          <img src="/logo.jpg" alt="Rooftop by Vrindavan Logo" className="h-14 md:h-16 w-auto rounded-md object-contain" />
+          <span className="font-heading text-xl md:text-2xl font-semibold text-foreground tracking-wide">
+            Rooftop <span className="text-primary">by Vrindavan</span>
+          </span>
         </Link>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-2 md:mr-12">
           {navLinks.map((link) => (
             <li key={link.path}>
               <Link
                 to={link.path}
-                className={`font-body text-sm tracking-wide transition-colors hover:text-primary ${
-                  location.pathname === link.path ? "text-primary font-medium" : "text-muted-foreground"
+                className={`font-body text-base px-5 py-2.5 rounded-md tracking-wide transition-all ${
+                  location.pathname === link.path 
+                    ? "bg-primary/15 text-primary font-medium" 
+                    : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -44,15 +49,17 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background border-b border-border">
-          <ul className="flex flex-col items-center gap-4 py-6">
+        <div className="md:hidden bg-background border-b border-border shadow-sm">
+          <ul className="flex flex-col items-stretch px-4 gap-2 py-6 text-center">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
                   onClick={() => setOpen(false)}
-                  className={`font-body text-base tracking-wide transition-colors hover:text-primary ${
-                    location.pathname === link.path ? "text-primary font-medium" : "text-muted-foreground"
+                  className={`block font-body text-lg px-6 py-3 rounded-md tracking-wide transition-all ${
+                    location.pathname === link.path 
+                      ? "bg-primary/15 text-primary font-medium" 
+                      : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
                   }`}
                 >
                   {link.label}

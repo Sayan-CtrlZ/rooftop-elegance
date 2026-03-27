@@ -5,7 +5,10 @@ const Footer = () => (
   <footer className="bg-foreground text-primary-foreground py-16">
     <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
       <div>
-        <h3 className="font-heading text-xl font-semibold mb-4">Rooftop by Vrindavan</h3>
+        <div className="flex items-center gap-3 mb-4">
+          <img src="/logo.jpg" alt="Rooftop by Vrindavan Logo" className="h-20 md:h-24 w-auto rounded-md object-contain" />
+          <h3 className="font-heading text-xl md:text-2xl font-semibold">Rooftop by Vrindavan</h3>
+        </div>
         <p className="text-sm opacity-70 leading-relaxed font-body">
           A warm rooftop dining experience in the heart of Shujalpur, Madhya Pradesh.
         </p>

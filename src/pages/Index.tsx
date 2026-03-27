@@ -54,7 +54,7 @@ const MenuCard = ({ name, price }: { name: string; price: string }) => (
 const Index = () => (
   <main>
     {/* Hero */}
-    <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       <img src={heroImg} alt="Rooftop by Vrindavan" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
       <div className="absolute inset-0 bg-foreground/40" />
       <motion.div

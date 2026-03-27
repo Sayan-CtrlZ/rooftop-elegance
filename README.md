@@ -1,3 +1,13 @@
-# Welcome to your Lovable project
+# Rooftop by Vrindavan
 
-TODO: Document your project here
+Premium Rooftop Dining in Shujalpur, Madhya Pradesh.
+
+## Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
