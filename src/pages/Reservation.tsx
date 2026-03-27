@@ -54,7 +54,17 @@ const Reservation = () => {
                   <option key={n} value={n}>{n} {typeof n === "number" && n === 1 ? "Guest" : "Guests"}</option>
                 ))}
               </select>
-              <input name="date" type="date" value={form.date} onChange={handleChange} required className={inputClass} />
+              <input 
+                name="date" 
+                type="text"
+                placeholder="Select Date" 
+                onFocus={(e) => (e.target.type = "date")}
+                onBlur={(e) => !form.date && (e.target.type = "text")}
+                value={form.date} 
+                onChange={handleChange} 
+                required 
+                className={inputClass} 
+              />
             </div>
             <div className="grid sm:grid-cols-2 gap-5">
               <ClockPicker
